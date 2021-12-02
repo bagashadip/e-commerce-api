@@ -1,0 +1,21 @@
+{
+  "name": "ecommerce-api",
+  "version": "1.0.0",
+  "description": "-",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./node_modules/nodemon/bin/nodemon.js app.js"
+  },
+  "author": "Bagas Hadi Prakoso",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/hapi": "^20.2.1",
+    "axios": "^0.24.0",
+    "pg": "^8.7.1",
+    "xml2js": "^0.4.23"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
