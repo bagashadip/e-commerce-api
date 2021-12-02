@@ -1,5 +1,41 @@
 # E-Commerce API
 
+### DDL for create Postgres Table
+
+```
+CREATE TABLE products (
+	sku VARCHAR(50) PRIMARY KEY,
+	name VARCHAR(255) NOT NULL,
+	image TEXT NULL,
+	price NUMERIC NOT NULL,
+	description TEXT NULL,
+	stock NUMERIC NOT NULL,
+	createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE transactions (
+	id SERIAL PRIMARY KEY,
+	buyer_name VARCHAR(255),
+	buyer_phone VARCHAR(50),
+	buyer_address TEXT,
+	total_price NUMERIC NOT NULL,
+	status VARCHAR(50),
+	createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE detail_transactions (
+	id SERIAL PRIMARY KEY,
+	transaction_id INT NOT NULL,
+	sku VARCHAR(50) NOT NULL,
+	qty INT NOT NULL,
+	amount NUMERIC NOT NULL,
+	FOREIGN KEY (transaction_id) REFERENCES transactions(id) ON DELETE CASCADE,
+	FOREIGN KEY (sku) REFERENCES products(sku) ON DELETE CASCADE
+);
+```
+
 ### Run Project
 
 - _`npm install`_
